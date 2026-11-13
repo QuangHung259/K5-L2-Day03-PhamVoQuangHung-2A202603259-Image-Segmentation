@@ -17,13 +17,13 @@ Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Sav
 | easy_semantic | `easy_semantic.zip` | 3 / 3 | 20 |
 | medium_instance | `medium_instance.zip` | 3 / 3 | 32 |
 | hard_panoptic | `hard_panoptic.zip` | 2 / 2 | 30 |
-| cp1_holes | chưa có | 0 / 1 | 3 |
-| cp2_slice | chưa có | 0 / 1 | 3 |
-| cp5_occlusion | chưa có | 0 / 1 | 3 |
-| cp3_thin | chưa có | 0 / 1 | 3 |
-| cp4_curb | chưa có | 0 / 1 | 3 |
-| cp6_coverage | chưa có | 0 / 1 | 3 |
-| **Tổng tối đa** | | | **100** |
+| cp1_holes | `cp1_holes.zip` | 1 / 1 | 3 |
+| cp2_slice | `cp2_slice.zip` | 1 / 1 | 3 |
+| cp5_occlusion | `cp5_occlusion.zip` | 1 / 1 | 3 |
+| cp3_thin | `cp3_thin.zip` | 1 / 1 | 3 |
+| cp4_curb | `cp4_curb.zip` | 1 / 1 | 3 |
+| cp6_coverage | `cp6_coverage.zip` | 1 / 1 | 3 |
+| **Tổng tối đa** | | **14 / 14** | **100** |
 
 Nếu export lỗi, ghi task, dữ liệu đã Save đến đâu và lỗi đã báo coach.
 
@@ -50,9 +50,9 @@ Chọn một lỗi **có thật** trong bài. Nếu công cụ lỗi khiến b�
 - Quy tắc và hành động sửa:
   1. Theo quy tắc vật bị che (occlusion) trong `guideline-mini-sheet.md`, chỉ vẽ phần nhìn thấy và giữ nguyên **một instance** cho cùng một chiếc xe: tôi chuyển sang dùng công cụ Brush (`mask`) để tô hai mảng nhìn thấy của chiếc taxi vàng quanh chân người đi bộ trong cùng 1 object `car` duy nhất (giữ kính chắn gió bên trong mask xe, không đè lên `person`).
   2. Với lỗi định dạng export, kiểm tra lại bằng script tự kiểm để xuất lại từ CVAT theo đúng chuẩn `COCO 1.0` (`annotations/instances_default.json`).
-- Sau sửa đã Save và export lại chưa? Đã Save đầy đủ 3 ảnh trên CVAT local; `easy_semantic.zip` và `hard_panoptic.zip` đã export đúng chuẩn (`[OK]`), riêng `medium_instance.zip` cần export lại sang `COCO 1.0`.
+- Sau sửa đã Save và export lại chưa? Đã Save đầy đủ toàn bộ 14/14 ảnh của 9 task trên CVAT local; 8/9 gói ZIP (`easy_semantic.zip`, `hard_panoptic.zip`, `cp1_holes.zip`, `cp2_slice.zip`, `cp3_thin.zip`, `cp4_curb.zip`, `cp5_occlusion.zip`, `cp6_coverage.zip`) đã export đúng chuẩn (`[OK]`), riêng `medium_instance.zip` cần export lại sang `COCO 1.0`.
 
-Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): Đã chạy `python scripts/inspect_submissions.py --dir submissions` kiểm tra cấu trúc (`easy_semantic`: `[OK]`, `hard_panoptic`: `[OK]` với 103 annotations gồm 95 polygon và 8 RLE) / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
+Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): Đã chạy `python scripts/inspect_submissions.py --dir submissions` kiểm tra cấu trúc: `easy_semantic` `[OK]`, `hard_panoptic` `[OK]` (103 annotations: 95 polygon, 8 RLE), `cp1_holes` `[OK]` (6 polygon), `cp2_slice` `[OK]` (13 polygon), `cp5_occlusion` `[OK]` (48 polygon), `cp3_thin` `[OK]`, `cp4_curb` `[OK]`, `cp6_coverage` `[OK]` / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
 
 ## 4. Ba ca chưa chắc hoặc đã cân nhắc
 
